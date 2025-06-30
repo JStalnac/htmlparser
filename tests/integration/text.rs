@@ -65,6 +65,15 @@ test!(
 );
 
 test!(
+    text_08,
+    "<p>å ></p>",
+    Token::ElementStart("", "p", 0..2),
+    Token::ElementEnd(ElementEnd::Open, 2..3),
+    Token::Text("å >", 3..7),
+    Token::ElementEnd(ElementEnd::Close("", "p"), 7..11)
+);
+
+test!(
     text_err_01,
     "<p>]]></p>",
     Token::ElementStart("", "p", 0..2),
